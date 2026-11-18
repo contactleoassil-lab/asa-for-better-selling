@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A$A | For Better Selling</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0c0f;color:#f5f5f5;font-family:Arial,sans-serif}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
+.logo{font-size:27px;font-weight:900;color:#d9b45b;letter-spacing:1px}
+.logo span{color:white}
+nav a{color:#ddd;text-decoration:none;margin:0 10px;font-size:14px}
+.hero{text-align:center;padding:65px 18px 45px;background:radial-gradient(ellipse at top,#302512 0%,#0b0c0f 65%)}
+.hero h1{font-size:38px;margin:10px 0;color:#f3d58b}
+.hero p{color:#aaa;line-height:1.8}
+.search{max-width:650px;margin:28px auto;display:flex;background:#fff;border-radius:12px;overflow:hidden;padding:5px}
+.search input{flex:1;min-width:0;border:0;padding:14px;font-size:15px;outline:none}
+.search button,.gold{background:#d9b45b;color:#17130a;border:0;padding:14px 22px;font-weight:bold;border-radius:8px;cursor:pointer}
+.section{padding:30px 6%}
+.section h2{font-size:23px;margin-bottom:22px}
+.section h2 span{color:#d9b45b}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:13px}
+.cat{background:#17191e;border:1px solid #292b30;border-radius:13px;padding:20px 10px;text-align:center;cursor:pointer;transition:.2s}
+.cat:hover{border-color:#d9b45b;transform:translateY(-3px)}
+.cat b{display:block;font-size:28px;margin-bottom:10px}
+.cat span{font-size:14px}
+.listings{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.item{background:#17191e;border:1px solid #292b30;border-radius:14px;overflow:hidden}
+.item img{width:100%;height:165px;object-fit:cover;background:#252525}
+.item-info{padding:15px}
+.item h3{font-size:16px;margin:5px 0 12px}
+.price{color:#e5c36e;font-size:18px;font-weight:bold}
+.meta{color:#999;font-size:12px;margin-top:10px}
+.publish{margin:25px 6%;padding:30px 20px;text-align:center;background:#17191e;border:1px solid #8c7139;border-radius:16px}
+.publish h2{color:#e5c36e}
+footer{text-align:center;padding:30px;color:#888;border-top:1px solid #292929;font-size:13px}
+button:active{transform:scale(.98)}
+@media(max-width:600px){header{padding:17px 5%}nav a{margin:0 4px;font-size:12px}.hero h1{font-size:29px}.section{padding:25px 5%}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">A<span>$</span>A</div>
+ <nav><a href="#">الرئيسية</a><a href="#categories">الأقسام</a><a href="#ads">الإعلانات</a></nav>
+</header>
+
+<section class="hero">
+ <div class="logo">A$A <span>FOR BETTER SELLING</span></div>
+ <h1>كل ما تبحث عنه، في مكان واحد</h1>
+ <p>اكتشف. اشترِ. بِع. عالم كامل من الفرص بين يديك.</p>
+ <div class="search">
+  <input id="searchInput" placeholder="ماذا تبحث عنه اليوم؟">
+  <button onclick="searchAds()">بحث</button>
+ </div>
+ <button class="gold" onclick="document.getElementById('publish').scrollIntoView({behavior:'smooth'})">＋ انشر إعلانك</button>
+</section>
+
+<section class="section" id="categories">
+ <h2>تصفح <span>الأقسام</span></h2>
+ <div class="categories">
+  <div class="cat" onclick="filterAds('سيارات')"><b>🚘</b><span>سيارات ومركبات</span></div>
+  <div class="cat" onclick="filterAds('عقارات')"><b>🏠</b><span>عقارات</span></div>
+  <div class="cat" onclick="filterAds('هواتف')"><b>📱</b><span>هواتف وإلكترونيات</span></div>
+  <div class="cat" onclick="filterAds('دراجات')"><b>🏍️</b><span>دراجات نارية</span></div>
+  <div class="cat" onclick="filterAds('أزياء')"><b>👕</b><span>أزياء وموضة</span></div>
+  <div class="cat" onclick="filterAds('أثاث')"><b>🛋️</b><span>أثاث ومنزل</span></div>
+  <div class="cat" onclick="filterAds('وظائف')"><b>💼</b><span>وظائف وخدمات</span></div>
+  <div class="cat" onclick="filterAds('رياضة')"><b>⚽</b><span>رياضة وترفيه</span></div>
+  <div class="cat" onclick="filterAds('أطفال')"><b>🧸</b><span>أطفال وأمومة</span></div>
+  <div class="cat" onclick="filterAds('معدات')"><b>🚜</b><span>زراعة ومعدات</span></div>
+ </div>
+</section>
+
+<section class="section" id="ads">
+ <h2>أحدث <span>الإعلانات</span></h2>
+ <div class="listings" id="listingGrid">
+  <div class="item" data-category="سيارات">
+   <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600" alt="سيارة">
+   <div class="item-info"><h3>سيارة رياضية بحالة ممتازة</h3><div class="price">4,500,000 دج</div><div class="meta">📍 الجزائر العاصمة · سيارات</div></div>
+  </div>
+  <div class="item" data-category="عقارات">
+   <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600" alt="منزل">
+   <div class="item-info"><h3>منزل عصري للبيع</h3><div class="price">18,000,000 دج</div><div class="meta">📍 وهران · عقارات</div></div>
+  </div>
+  <div class="item" data-category="هواتف">
+   <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600" alt="هاتف">
+   <div class="item-info"><h3>هاتف ذكي بحالة جيدة</h3><div class="price">95,000 دج</div><div class="meta">📍 عنابة · هواتف</div></div>
+  </div>
+  <div class="item" data-category="دراجات">
+   <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600" alt="دراجة">
+   <div class="item-info"><h3>دراجة نارية رياضية</h3><div class="price">1,200,000 دج</div><div class="meta">📍 قسنطينة · دراجات</div></div>
+  </div>
+ </div>
+ <p id="empty" style="display:none;color:#aaa">لا توجد إعلانات مطابقة.</p>
+ <button onclick="filterAds('')" style="margin-top:20px;background:#292929;color:white;border:0;padding:12px 20px;border-radius:8px">عرض الكل</button>
+</section>
+
+<section class="publish" id="publish">
+ <h2>لديك شيء للبيع؟</h2>
+ <p style="color:#aaa">اعرض منتجك أمام آلاف المشترين المحتملين.</p>
+ <button class="gold" onclick="alert('سيتم تفعيل نشر الإعلانات الحقيقي بعد ربط قاعدة البيانات.')">＋ ابدأ بنشر إعلانك</button>
+</section>
+
+<footer>
+ <div class="logo">A$A</div>
+ <p>FOR BETTER SELLING</p>
+ <p>منصة الإعلانات المبوبة الجزائرية</p>
+ © 2026 A$A. جميع الحقوق محفوظة.
+</footer>
+
+<script>
+function filterAds(category){
+ document.querySelectorAll('.item').forEach(item=>{
+ item.style.display=(!category||item.dataset.category===category)?'block':'none';
+ });
+ document.getElementById('empty').style.display=
+ document.querySelectorAll('.item[style*="display: block"]').length?'none':'block';
+}
+function searchAds(){
+ const q=document.getElementById('searchInput').value.trim().toLowerCase();
+ let count=0;
+ document.querySelectorAll('.item').forEach(item=>{
+ const match=item.innerText.toLowerCase().includes(q);
+ item.style.display=match?'block':'none';
+ if(match)count++;
+ });
+ document.getElementById('empty').style.display=count?'none':'block';
+}
+</script>
+</body>
+</html>
